@@ -90,54 +90,14 @@
     <main id="maincontent">
         <article>
 
-            <h2 tabindex="0"  role="heading" aria-label="FESTIVAL DIRECTOR'S WELCOME">Festival Director's Welcome.</h2>
+            <h2 id="directorTitle" tabindex="0"  role="heading" aria-label="FESTIVAL DIRECTOR'S WELCOME"></h2>
 
-            <h3 tabindex="0" role="heading" aria-label="Greg Thorpe">Greg Thorpe</h3>
+            <h3 id="directorName" tabindex="0" role="heading" aria-label="Greg Thorpe"></h3>
 
    
-                <img alt="The image shows a man with short curly hair and a beard, smiling while seated in an outdoor garden at 
-                sunset. The background features blooming flowers and a structure with columns entwined with climbing plants." 
-                src="img/Festival Director pic 2.jpg">
+            <img id="directorImage" alt="Director image" />
 
-
-            <h4 tabindex="0" role="heading" aria-label="Hello friends, and welcome to the GAZE International LGBTQIA Film Festival 
-            for 2024.">Hello friends, and welcome to the GAZE International LGBTQIA Film Festival for 2024.</h4>
-
-            <p tabindex="0">
-                It's a big one! This year we present 25 in- ternational features and 10 eclectic shorts programmes over five days, 
-                including Irish, European and World Premieres. We have mas- terclass conversations with filmmakers, actors, musicians
-                 and gamers. We present forgotten gay artists, lesbians from Lesbos, trans women on the catwalk, and trans guys in the 
-                 sauna. We celebrate Black queer artistry, Bollywood musicals, and old lesbians. We bring you a bisexual music icon, a 
-                 nude beach, a drag dramedy and queer cheerleaders. We interro- gate taboos and we celebrate resistance. We also offer a 
-                 workshop for film critics, a get-to- gether for festival-goers and filmmakers, four parties (at the last count), a brand
-                  new ticketing system for festival bundles and offers, and of course world class cinema from end to end.
-                  <br><br>
-                We've an incredibly talented team at the helm to bring you this year's event, so let me say thank you and welcome to new 
-                Festival Manager Sam Ahern, new Marketing Manager Jack O'Dea, and new Festival Intern, Mayra Xavier. Your commitment, 
-                excellence and imagination has re-ignited our enthusiasm. Thank you also to Assistant Programmer James Hudson for consistently
-                 unearthing cinematic treasure, and Samuel Foxton who has been with GAZE for over ten incredible years. Samuel not only 
-                 makes sure we secure 100+ pristine cinema files to enjoy every year, but he is also the talented artist behind our stunning 
-                 annual festival trailer. Thank you Samuel.
-                 <br><br>
-                We've also expanded our Board of Trustees, welcoming an amazing team of individuals ded- icated to strengthening and 
-                future-proofing this great festival. We are lucky to have all of you and I give you each my heartfelt gratitude. There has b
-                een sad news too since our last get-together. In October, GAZE lost a dear friend
-                and Ireland lost an icon and trail-blazer when the irrepressible and irreplaceable Edmund Lynch sadly died. We honour Ed's 
-                memory at this year's festival with a screening of his ground-breaking documentary, A Different Country, where his work and 
-                legacy will be remembered and celebrated. Aside from being at the forefront of queer cinema, the most rewarding thing about 
-                directing a film festival is sharing the platform through collaboration. This year we have a plethora of partnerships; some 
-                new, others longstanding; bringing comradeship, diversity and community to our programme. A huge GAZE thank you to Queer 
-                Spectrum Film Festival, Sporting Pride, Iris Prize, Leathermen of Ireland, Small Trans Library Dublin, aemi, Gay Health Network, 
-                TENI, Bealtaine Festival, and Queer Cinema For Palestine.
-                <br><br>
-                Above all we have a renewed sense of vigour and excitement to share all things cutting-edge, challenging and fun from the world 
-                of LGBTQIA cinema with you, our audience.
-                This is my third year directing GAZE and it has been a genuine privilege and adventure from the very beginning. Only last summer, 
-                Ed Lynch - always the committed GAZE supporter - spoke in one of our workshops.
-                <em>Don't forget that you can change the culture,</em> he reminded us.
-                So let's do that, and let's change it for the better. 
-                <br><br>
-                <strong>We'll see you in the cinema.</strong>
+            <p tabindex="0" id="directorText">
             </p>
                 <br><br>
         </article>
@@ -165,6 +125,22 @@
 </footer>
 <script>
     
+    // 1) Fetch the JSON file from 'content/director.json'
+    fetch('content/director.json')
+      .then(response => response.json())
+      .then(data => {
+        // data => { title: "...", directorName: "...", image: "img/...", welcomeText: "..." }
+
+        // 2) Insert the fetched data into the DOM
+        document.getElementById('directorTitle').textContent = data.title;
+        document.getElementById('directorName').textContent  = data.directorName;
+        document.getElementById('directorImage').src         = data.image;
+        document.getElementById('directorText').textContent  = data.welcomeText;
+      })
+      .catch(err => {
+        console.error('Error fetching director.json:', err);
+      });
+
     document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav');
     const toggleButton = document.querySelector('.menu-toggle');
