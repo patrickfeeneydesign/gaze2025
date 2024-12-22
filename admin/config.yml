@@ -1,14 +1,12 @@
 backend:
   name: github
   repo: patrickfeeneydesign/gaze2025  # Replace with your actual GitHub username/repo name
-  branch: main                         # or 'master' or whichever branch hosts your Pages
- # Add these lines if you want to explicitly set your OAuth app info:
-  app_id: "Ov23liLtTJpkoaJPPuMx"         # The GitHub OAuth Client ID
+  branch: main
+  app_id: "Ov23liLtTJpkoaJPPuMx"   # The GitHub OAuth Client ID
   base_url: "https://github.com"
   auth_endpoint: "/login/oauth/authorize"
-  # This scope is needed so the CMS can push/pull from your repo:
   auth_scope: "repo"
-  
+
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
@@ -24,4 +22,3 @@ collections:
           - { label: "Director Name", name: "directorName", widget: "string" }
           - { label: "Image Path", name: "image", widget: "string" }
           - { label: "Welcome Text", name: "welcomeText", widget: "text" }
-
