@@ -1,1 +1,21 @@
+backend:
+  name: github
+  repo: patrickfeeneydesign/gaze2025  # Replace with your actual GitHub username/repo name
+  branch: main                         # or 'master' or whichever branch hosts your Pages
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "director"
+    label: "Director's Page"
+    files:
+      - file: "content/director.json"
+        label: "Director's Welcome"
+        name: "directorJson"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Director Name", name: "directorName", widget: "string" }
+          - { label: "Image Path", name: "image", widget: "string" }
+          - { label: "Welcome Text", name: "welcomeText", widget: "text" }
 
