@@ -3,9 +3,10 @@ backend:
   repo: patrickfeeneydesign/gaze2025  # Replace with your actual GitHub username/repo name
   branch: main
   app_id: "Ov23liLtTJpkoaJPPuMx"   # The GitHub OAuth Client ID
-  base_url: "https://github.com"
-  auth_endpoint: "/login/oauth/authorize"
-  auth_scope: "repo"
+ # Where this is the client_id from your GitHub OAuth App
+  open_authoring: false
+  base_url: https://api.netlify.com
+  auth_endpoint: /auth
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
