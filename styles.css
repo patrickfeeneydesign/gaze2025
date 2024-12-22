@@ -1,0 +1,1385 @@
+/* Desktop styles */
+@media (min-width: 768px) {
+
+
+html, body {
+
+    overflow-x: hidden;
+    
+}
+    body {
+        font-family: tt-commons-pro, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #161717;
+    }
+
+    body, a, button, input {
+        cursor: none; /* Hide the default cursor for the body and all interactive elements */
+    }
+
+/* This applies only in Firefox */
+@supports (-moz-appearance: none) {
+    p {
+        line-height: 1.8vw;
+    }
+    article {
+        padding-bottom: 7vw;
+    }
+    li {
+        line-height: 1.8vw;
+
+    }
+  }
+
+
+/* HIDDEN ON DESKTOP */
+
+.desktophide {
+    display:none;
+}
+
+
+
+/* SKIP LINK STYLE */
+
+    .skip-link {
+        top: -10vw;
+        position: absolute;
+        background-color: #161717;
+        color: #e0e0e0;
+        z-index: 10000;
+      }
+      
+      .skip-link:focus-visible {
+        top: 0;
+        position: absolute;
+        background-color: #161717;
+        color: #e0e0e0;
+        opacity: 100%;
+        z-index: 10000;
+    }
+
+
+    /* FOCUS STYELS */
+    header:focus-visible {
+        outline: 2px dashed white; /* white outline */
+        outline-offset: 2px;       /* Space between outline and element */
+        z-index: 3000;
+    }
+
+    li:focus-visible {
+        outline: 2px dashed white; /* white outline */
+        outline-offset: 2px;       /* Space between outline and element */
+        z-index: 1000;
+    }
+
+    section p:focus-visible {
+        outline: 4px dashed white; /* white outline */
+        border-radius: 10px;
+        outline-offset: 20px;       /* Space between outline and element */
+        z-index: 1000;
+    }
+
+    .social-icons img:focus-visible {
+        outline: 2px dashed white; /* white outline */
+        outline-offset: 2px -1px 2px -1px;       /* Space between outline and element */
+        z-index: 3000;
+    }
+
+
+/* CUSTOM CURSOR */
+
+    .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        pointer-events: none; /* Prevent the cursor from interfering with other elements */
+        z-index: 10000; /* Ensure the cursor is above all other elements */
+        transform: translate(-50%, -50%);
+        background-color: white;
+        mix-blend-mode: difference; /* Ensure the cursor blends with the background */
+    }
+    
+    .hovered {
+        background-color: white;
+        border: 2px solid white;
+        mix-blend-mode: normal;
+    }
+
+
+
+    
+    /* MAIN HEADER */
+header {
+    position: fixed;
+    width: max(18vw, 230px);
+    min-height: 100px;
+    color: white;
+    text-align: left;
+     background-color: white; /* Ensure this is not overridden */
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+}
+
+    /* MAIN HEADER */
+    header.firstpage {
+        position: fixed;
+        width: 19vw;
+        color: white;
+        text-align: left;
+        background-color: transparent; /* Ensure this is not overridden */
+        border-bottom: 1px solid white;
+        margin: 0;
+        padding: 0;
+        z-index: 4000;
+    }
+
+header img {
+    height: 3.5vw;
+    width: auto;
+    min-width: 50px;
+    min-height: 50px;
+    padding: 2vw;
+    -moz-transition: all 0.3s; /* Mozilla specific transition */
+    transition: all 0.3s;
+}
+
+/* Add Mozilla specific prefixes if necessary */
+@media screen and (-moz-images-in-menus: 0) {
+    header {
+        text-decoration: none;/* Mozilla-specific styles if needed */
+    }
+}
+
+
+
+/* Button to toggle the menu */
+.menu-toggle {
+    position: fixed;
+    top: max(7.93vw, 100px);
+    left: 0; /* Ensure it starts from the edge */
+    width: 4vw;
+    height: 3vw;
+    min-width: 50px;
+    min-height: 40px;
+    background-color: #161717;
+    z-index: 3500; /* Adjust if necessary to be above other elements */
+
+    color: white;
+    font-size: max(1.7vw, 30px);
+    cursor: pointer;
+    border: none;
+    padding: 0 1vw 0 0.5vw;
+    transition: width 0.3s ease; /* Smooth width transition */
+}
+
+.menu-toggle:before {
+    content: '☰'; /* Hamburger icon */
+    font-size: max(1.7vw, 20px);
+    z-index: 3000; /* Adjust if necessary to be above other elements */
+    display: block;
+    text-align: center;
+}
+
+.menu-toggle.expanded:before {
+    content: 'MENU'; /* Close icon */
+    text-align: left;
+    z-index: 5000; /* Adjust if necessary to be above other elements */
+
+    font-size: max(1.7vw, 20px);
+    padding: 0 1vw 0 1vw;
+
+}
+
+.menu-toggle.expanded {
+    width: 19vw; /* Expanded width */
+    border: none;
+    z-index: 5000; /* Adjust if necessary to be above other elements */
+
+    background-color: #66cdff;
+    color: #161717;
+}
+
+/* PARENT NAV */
+
+
+/* Initial state of the navigation */
+nav {
+    position: fixed;
+    top: max(10.9vw, 140px);
+    width: 14vw;
+    left: -20vw;  /* Explicitly start off-screen */
+    opacity: 0;  /* Start fully transparent */
+    z-index: 1100;
+    transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;  /* Smooth slide and fade transition */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2); /* Shadow for depth */
+}
+
+nav ul {
+    list-style-type: none;
+    background-color: #161717;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: #f7f7f7;
+    padding: 15px 20px 15px 20px;
+    font-size: max(1.5vw, 19px);
+    font-weight: 200;
+    display: block;
+    text-decoration: none;
+    border-left: 1vw solid #f7f7f7;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+nav ul li a span {
+    color: #66cdff;
+    font-weight: 900;
+}
+
+nav ul li a:focus, 
+nav ul li a:hover {
+    background-color: #d0d0d0;
+    color: #161717;
+    outline: none;
+    z-index: 1100;
+}
+
+
+
+/* NAVIGATION SUBMENU */
+.dropdown-content {
+    display: block;
+    position: absolute;
+    left: 13vw;
+    top: 0;
+    white-space: nowrap;
+    background-color: #f7f7f7;
+    border-left: none;
+    opacity: 0; /* Initially fully transparent */
+    transform: translateX(-3px); /* Start slightly above to give a dropping effect */
+    visibility: hidden; /* Initially not visible */
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease; /* Smooth transition for opacity, transform, and visibility */
+}
+
+.dropdown-content li {
+    display: block;
+    text-align: left;
+    margin-right: -4px;
+}
+
+.dropdown-content li a {
+    font-size: max(1vw, 13px);
+    border-left: none;
+    color: #161717;
+    padding: 0.5vw 0.6vw 0.5vw 0.6vw;
+    padding: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #161717;
+    color: #f7f7f7;
+    z-index: 1100;
+} 
+.dropdown:focus .dropdown-content {
+    top: 0;
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Move to final vertical position */
+    visibility: visible; /* Make visible and interactable */
+}
+.dropdown:hover .dropdown-content {
+    left: 13vw;
+    top: 0;
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Move to final vertical position */
+    visibility: visible; /* Make visible and interactable */
+}
+
+
+/* Ensures dropdown stays visible when any child has focus */
+.dropdown:focus-within .dropdown-content {
+    display: block;
+    z-index: 1100;
+    top: 0;
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Move to final vertical position */
+    visibility: visible; /* Make visible and interactable */
+}
+
+/* Style for focusing on links within the dropdown for better visibility */
+.dropdown-content li a:focus {
+    background-color: #e0e0e0; /* Light grey background for focused links */
+    color: #161717;
+    outline: none; /* Optional: Adjust according to your visual design needs */
+    z-index: 1100;
+}
+   
+    
+
+
+
+
+
+/* MAIN */
+
+    /* SECTION */
+    
+    section {        background-color: #161717;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 7vw 7vw 7vw 7vw;
+    }
+    
+    section p {
+        line-height: 10vh;
+        font-size: 10vh;
+        color: #66cdff;
+        font-weight: 600;
+    }
+
+section p a {
+    text-decoration: none;
+    color: #f7f7f7;
+}
+section p a:hover {
+    text-decoration: none;
+    color: #82ed97;
+    
+}
+
+main a {
+    color: #50bef5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+main a:hover {
+    color: #52d26c;
+}
+    /* This area contains styling for the sections which have images in the bacgkround */ 
+
+
+    .backgroundimg {
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('img/updated/Background.gif');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 80vh;
+        /* Initial scale for the background image */
+        transform: scale(1);
+        transition: transform 0.2s ease-out; /* Smooth transition */
+        z-index: 1;
+        }
+    
+    .backgroundimg p {
+        color: #f7f7f7;
+        line-height: 9vw;
+        font-size: 7vw;
+        margin-top: 5vw;
+    }
+    
+        
+    .backgroundimg2 {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/updated/Terratoma05_02.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Initial scale for the background image */
+        transform: scale(1);
+        transition: transform 0.2s ease-out; /* Smooth transition */
+        z-index: 1;
+
+    }
+    
+    .backgroundimg2 p {
+        color: #f7f7f7;
+    }
+
+    .backgroundimg3 {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/updated/realness.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Initial scale for the background image */
+        transform: scale(1);
+        transition: transform 0.2s ease-out; /* Smooth transition */
+        z-index: 1;
+
+    }
+    
+    .backgroundimg3 p {
+        color: #f7f7f7;
+    }
+
+
+
+
+
+    /* Article / lsiting  */
+
+    article {
+        background-color: #f7f7f7;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        background-color: #161717;
+        color: #f7f7f7;
+        text-align: left;
+        font-size: 10vw;
+        line-height: 12vw;
+        padding-left: 8vw;
+        padding-top: 8vw;
+        padding-right: 25vw;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    h3 {
+        background-color: #161717;
+        color: #66cdff;
+        font-size: 3vw;
+        font-weight: 300;
+        padding-left: 8vw;
+        padding-bottom: 8vw;
+        margin: 0;
+
+    }
+
+    figure {
+        padding: 0;
+        margin: 0;
+        height: 20vw; /* Fixed height */
+        width: 20vw; /* Adjust width as necessary */
+        overflow: hidden; /* Ensures that any overflowing content is hidden */
+        position:absolute; /* Ensures proper positioning of the image */
+        right: 0px;
+        top: 38.5vw;
+    }
+    
+   figure img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; /* Covers the area, will be clipped to fit */
+        position: absolute;
+        right: 0;
+    }
+    h4 {
+        padding: 4vw 36vw 2vw 8vw;
+        font-size: max(1.5vw, 30px);
+        font-weight: 500;
+        margin: 0;
+
+    }
+
+
+    h5 {
+        padding: 2vw 5vw 2vw 8vw;
+        font-size: max(1.5vw, 30px);
+        font-weight: 300;
+        margin: 0;
+        font-style: italic;
+
+    }
+
+    article p {
+        padding: 2vw 20vw 2vw 8vw;
+        font-size: max(1.3vw, 20px);
+        font-weight: 200;
+        margin: 0;
+        columns: 2;
+        column-gap: 3vw;
+        text-align: justify;    }
+    
+    article img {
+        height: fit-content;
+        width: 64%;
+        margin-left: 8vw;
+        overflow: hidden;
+        margin-top: 3vw;
+    }
+
+
+.ticketbutton {
+    width: 11vw;
+    height: 3vw;
+    background-color: #50bef5;
+    color:#161717;
+    font-weight: 400;
+    margin-left: 8vw;
+    align-content: center;
+    padding: 1vw;
+    transition: all 0.3 ease;
+
+}
+
+.ticketbutton:hover {
+background-color: #161717;
+}
+
+.ticketbutton:hover a {
+    color:#66cdff;
+}
+
+.ticketbutton a {
+    padding: 0;
+    padding-left: 1vw;
+    color:#161717;
+    font-size: 1.4vw;
+    font-weight: 600;
+}
+
+
+
+    /* GALLERY */
+
+
+.keydown:focus-visible {
+    outline: 3px dashed white; /* white outline */
+    outline-offset: 2px;       /* Space between outline and element */
+    z-index: 1000;
+}
+.gallery {
+    column-count: 4;
+    column-gap: 2vw;
+    width: 94%;
+    padding-left: 3vw;
+}
+
+.gallery .image-container {
+    break-inside: avoid-column;
+    margin-bottom: 2vw;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px; /* Default border-radius */
+    transition: border-radius 0.2s ease-in-out; /* Smooth transition */
+}
+
+.image-container:hover {
+    border-radius: 3vw;
+}
+
+.image-container.highlighted {
+    border-radius: 3vw; /* Constantly enlarged border radius for highlighted items */
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(0, 119, 255); /* Blue background */
+    color: white;
+    font-size: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    text-align: center;
+    transition:  0.5s ease;
+
+}
+
+.overlay:hover {
+    transition:  0.5s ease;
+    font-size: 3.8vw;
+    background: rgba(0, 162, 255, 1); /* Blue background */
+
+}
+
+.image-container:hover .overlay,
+.overlay.always-show {
+    opacity: 1; /* Make the overlay always visible on hover or if class always-show is present */
+}
+
+.image-container.highlighted .overlay {
+    opacity: 1; /* Ensure the overlay is always visible */
+}
+
+.image-container.highlighted .overlay:hover {
+    background-color: #e0e0e0;
+    color:#161717;
+    transition:  0.5s ease;
+    font-size: 3.3vw;
+
+}
+
+/* FOR THE TIEMTABLE PAGE */
+
+.overlay span {
+    font-size: 0.7vw;
+    font-weight: 200;
+}
+
+.overlay:hover span {
+    font-size: 1vw;
+    font-weight: 200;
+    transition:  0.5s ease-in-out;
+
+
+}
+
+.overlay em {
+    font-size: 1.2vw;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 1vw;
+
+}
+
+.overlay:hover em {
+    font-size: 1.5vw;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 2vw;
+    transition:  0.4s ease-in-out;
+
+
+}
+
+.overlay strong {
+    font-size: 1.8vw;
+
+}
+
+.overlay:hover strong {
+    font-size: 2vw;
+    transition:  0.3s ease-in-out;
+    line-height: 2.4vw;
+
+}
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+/* FORM SUBSCRIBE */
+/* FORM SUBSCRIBE */
+#mc_embed_signup {
+    
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/DTS_TOUCHING_GRASS__JELLY_LUISE_9948.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+fieldset {
+    margin-top: 6vw;
+
+    margin-bottom: 20px;
+    width: 50vw;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 1vw;
+    color: #f7f7f7;
+}
+
+legend:focus {
+    outline: 2px dashed white; /* white outline */
+    outline-offset: 2px;       /* Space between outline and element */
+    z-index: 1000;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #f7f7f7;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 36vw;
+    height: 3vw;
+    background-color: #161717;
+    color: #f7f7f7;
+    font-size: medium;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: 2px dashed white; /* white outline */
+    outline-offset: 2px;       /* Space between outline and element */
+    z-index: 1000;
+}
+
+input[type="submit"] {
+    background-color: #161717;
+    border-radius: 2vw;
+    margin-top: 6vw;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 2em;
+    height: 5vw;
+    width: 12vw;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:focus {
+    outline: 2px dashed white; /* white outline */
+    outline-offset: 2px;       /* Space between outline and element */
+    z-index: 1000;
+}
+
+input[type="submit"]:hover {
+    background-color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+    /* Footer */
+    footer {
+        background-color: none;
+        height: 3.5vw;
+        width: 36vw;
+        position: fixed;
+        top: 0;
+       right: 0;
+       border-bottom: 1px solid white;;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        color: white;
+    }
+
+    footer.black-background {
+        background-color: #f7f7f7;
+        color: #161717;
+        border-bottom: none;
+
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .social-icons a img {
+        height: 1.2vw;
+        width: auto;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        /* filter: invert(100%); */
+    }
+
+    footer.black-background .social-icons a img {
+        filter: invert(100%);
+    }
+
+    .footer-text {
+        color: white; /* Text color for readability on dark background */
+        font-size: 0.7vw; /* Adjusted to fit the smaller footer height on desktop */
+        text-align: right; /* Text aligned to the left */
+        padding-left: 2vw;
+        font-weight: 300;
+    }
+    footer.black-background .footer-text {
+        color: #161717; /* Sets the text color to white when within a 'white-background' footer */
+    }
+    
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+
+/* Mobile styles */
+@media (max-width: 767px) {
+
+    body {
+        font-family: tt-commons-pro, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #161717;
+    }
+
+
+/* HIDDEN ON mobile */
+
+.mobilehide {
+    display:none;
+}
+
+
+    /* SKIP LINK STYLE */
+
+    .skip-link {
+    display: none;
+      }
+      
+      .skip-link:focus {
+        display: none;      }
+
+    /* MAIN HEADER */
+    header {
+        width: 100%;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid black;
+    }
+
+   .menu-toggle {
+    display: none;
+   }
+header img {
+    height: 10vw;
+    width: auto;
+    padding: 5vw;
+    -moz-transition: all 0.3s; /* Mozilla specific transition */
+    transition: all 0.3s;
+}
+nav {
+    width: 100%;
+    background-color: #161717;
+}
+
+nav ul {
+    width: 100%;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #161717;
+    color:#e0e0e0
+}
+
+nav ul li a {
+    width: 100%;
+    font-size: 8vw; /* Adjust font size for mobile */
+    font-weight: 500;
+    text-decoration: none;
+    color: #f7f7f7;
+}
+
+li.dropdown {
+    padding-left: 4vw;
+}
+
+li.dropdown.active {
+    background-color: #161717;
+    color:#f7f7f7;
+}
+
+/* Submenu items display underneath the parent item */
+.dropdown-content {
+    position: static; /* Change from absolute to static */
+    overflow: hidden;
+    max-height: 0; /* Initially hide the submenu */
+    width: 100%;
+    background-color: #f7f7f7; /* Different background color for submenu */
+    transition: max-height 0.5s ease-out; /* Smooth transition for opening and closing */
+}
+
+.dropdown-content li {
+    display: block; /* Display submenu items in a column */
+    width: 100%;
+    padding: 2vw 0;
+}
+
+.dropdown-content li a {
+    font-size: 4vw; /* Adjust font size for submenu items */
+    margin: 2vw;
+    color: #161717;
+}
+
+/* Assuming active class is added via JS when dropdown is expanded */
+.dropdown.active .dropdown-content {
+    max-height: 1000px; /* Adjust based on content size */
+}
+    
+    /* SECTION */
+    section {
+        background-color: #161717;
+        display: flex;
+        flex-direction: column; /* Ensures text and other elements are stacked vertically */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    section p {
+        line-height: 13vw;
+        font-size: 12vw; /* Adjust this value to change the text size */
+        color: #66cdff;
+        font-weight: 600;
+        padding: 5vw;
+    }
+    
+
+    section p a {
+        text-decoration: underline;
+        color: #f7f7f7;
+    }
+
+    .backgroundimg {
+        /* LINEAR GRADIENT TO TINT THE IMAGE DARKER */ 
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('img/updated/Background.gif');
+        background-size: cover;
+    }
+    
+    .backgroundimg p {
+        color: #f7f7f7;
+        padding-top: 12vw;
+        padding-bottom: 12vw;
+    }
+
+
+
+    .backgroundimg2 {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/updated/Terratoma05_02.png');
+        background-size:cover;
+    }
+
+    .backgroundimg2 p {
+        color: #f7f7f7;
+    }
+
+    .backgroundimg3 {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/updated/realness.jpg');
+        background-size:cover;
+
+    }
+
+    .backgroundimg3 p {
+        color: #f7f7f7;
+    }
+
+    .pink {
+        background-color: #161717;
+        /* ADDING A MARGIN BECUASE OF FOOTER OVERLAP */
+        margin-bottom: 10vw;
+    }
+
+
+
+
+
+
+main a {
+    color: #50bef5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+main a:hover {
+    color: #52d26c;
+}
+
+/* Article / lsiting  */
+
+article {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    background-color: #2c2c2c;
+    color: #f7f7f7;
+    font-size: 8vw;
+    padding-left: 3vw;
+    margin: 0;
+    font-weight: 600;
+}
+
+h3 {
+    background-color: #2c2c2c;
+    color: #f7f7f7;
+    font-size: 4.5vw;
+    font-weight: 500;
+    padding-left: 3vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    margin: 0;
+
+}
+
+figure {
+    padding: 0;
+    margin: 0;
+    height: 45vw; /* Fixed height */
+    width: 100%; /* Adjust width as necessary */
+    overflow: hidden; /* Ensures that any overflowing content is hidden */
+    position: relative; /* Ensures proper positioning of the image */
+}
+
+figure img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Covers the area, will be clipped to fit */
+    position: absolute;
+}
+
+article h4 {
+    padding: 5vw 3vw 0.5vw 4vw;
+    font-size: 4vw;
+    font-weight: 500;
+    margin-left: 7vw;
+    margin-top: 0;
+    margin-right: 6vw;
+    margin-bottom: 0;
+
+}
+
+
+article h5 {
+    padding: 3vw 3vw 1vw 4vw;
+    font-size: 4vw;
+    font-weight: 300;
+    margin-left: 7vw;
+    margin-top: 0;
+    margin-right: 5vw;
+    margin-bottom: 0;
+    font-style: italic;
+
+}
+
+article p {
+    padding: 3vw 13vw 1vw 4vw;
+    font-size: 3.5vw;
+    font-weight: 200;
+    margin-left: 7vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 7vw;
+}
+    
+
+.ticketbutton {
+    width: 40vw;
+    height: 15vw;
+    background-color: #50bef5;
+    color:#161717;
+    font-weight: 400;
+    margin-left: 8vw;
+    align-content: center;
+    padding: 1vw;
+    transition: all 0.3 ease;
+
+}
+
+.ticketbutton a {
+    padding: 0;
+    padding-left: 5vw;
+    color:#161717;
+    font-size: 5vw;
+    font-weight: 600;
+}
+
+.ticketbutton a:hover {
+    padding: 0;
+    padding-left: 5vw;
+    color:#161717;
+    font-size: 5vw;
+    font-weight: 600;
+}
+
+
+
+/* ARCHIVE */
+
+
+
+    /* GALLERY */
+
+
+
+    .gallery {
+        column-count: 3; /* Creates five columns */
+        column-gap: 2vw; /* Space between columns */
+        width: 94%; /* Full width of the container */
+        padding-left: 3.8vw;
+    }
+    
+    .gallery .image-container {
+        break-inside: avoid-column; /* Prevents breaking the container across columns */
+        margin-bottom: 2vw; /* Consistent spacing between items */
+        width: 100%; /* Takes up full column width */
+        display: inline-block; /* Ensures the block fills the column width */
+        position: relative; /* For positioning the overlay */
+        overflow: hidden; /* Keeps everything neat */
+        border-radius: 10px;
+    }
+    
+    .gallery img {
+        width: 100%; /* Ensures the image fills its container */
+        height: auto; /* Maintains aspect ratio */
+        display: block; /* Remove extra space below the image */
+    }
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+        color:#f7f7f7;
+        font-size: 4vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+        text-align: left;
+        padding-left: 2vw;
+        
+    }
+    
+    .image-container:hover .overlay {
+        opacity: 1;
+    }
+    
+
+/* FOR THE TIEMTABLE PAGE */
+
+.overlay span {
+    font-size: 2vw;
+    font-weight: 200;
+    line-height: 3vw;
+
+}
+
+
+.overlay em {
+    font-size: 3vw;
+    font-weight: 200;
+    font-style: normal;
+    line-height: 3vw;
+
+}
+
+
+.overlay strong {
+    font-size: 4vw;
+
+}
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+/* FORM SUBSCRIBE */
+/* FORM SUBSCRIBE */
+#mc_embed_signup {
+    
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/DTS_TOUCHING_GRASS__JELLY_LUISE_9948.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+fieldset {
+    margin-top: 60vw;
+
+    margin-bottom: 30vw;
+    width: 70vw;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 1vw;
+    color: #f7f7f7;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #f7f7f7;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 58vw;
+    height: 10vw;
+    background-color: #161717;
+    color: #f7f7f7;
+    font-size: medium;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #161717;
+    border-radius: 2vw;
+    margin-top: 6vw;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 2em;
+    height: 15vw;
+    width: 30vw;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #66cdff;
+    color: #161717;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: #161717;
+    height: 12vw;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between; /* Align items on opposite ends */
+    align-items: center;
+    padding: 0 3vw; /* Add some horizontal padding */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a img {
+    height: 5vw; /* Adjust size as needed */
+    width: auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 1vw;
+}
+
+.footer-text {
+    color: white; /* Set the text color to white */
+    font-size: 2vw; /* Adjust the font size as needed */
+    padding-right: 7vw;
+    text-align: left; /* Align the text to the left */
+}
+}
